@@ -26,7 +26,12 @@
 	modules = [
           ./system/configuration.nix
 	  ./system/hardware-configuration.nix
-	  ./home/flake.nix
+	  home-manager.nixosModules.home-manager
+	  {
+            home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPackages = true;
+	    home-manager.users.jaduff = import ./home/home.nix;
+	  }
 	];
       };
     };

@@ -25,9 +25,13 @@
   networking.hostName = "Carnifex-nix";
 
   # Setup keyfile
-#  boot.initrd.secrets = {
-#    "/crypto_keyfile.bin" = null;
-#  };
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
+  };
+
+  # Enable swap on luks
+  boot.initrd.luks.devices."luks-560d2bbf-03ca-4220-9357-59e0abc465ec".device = "/dev/disk/by-uuid/560d2bbf-03ca-4220-9357-59e0abc465ec";
+  boot.initrd.luks.devices."luks-560d2bbf-03ca-4220-9357-59e0abc465ec".keyFile = "/crypto_keyfile.bin";
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -192,9 +196,7 @@
   alacritty
   remmina
   oh-my-fish
-  #oh-my-zsh
   fish
-  #zsh
   borgbackup
   vorta
   virt-manager
@@ -212,6 +214,16 @@
   gimp
   librewolf
   nextcloud-client
+  kdeconnect
+  kate
+  kcalc
+  joplin-desktop
+  zettlr
+  protonmail-bridge
+  thunderbird
+  anytype
+  espanso
+  skypeforlinux
 #  (builtins.getFlake "github:jaduff/fflinuxprint-flake")
   (vscode-with-extensions.override {
     vscodeExtensions = with vscode-extensions; [
