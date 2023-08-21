@@ -1,0 +1,32 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
+
+{
+home.username = "jaduff";
+home.homeDirectory = "/home/jaduff";
+home.packages = [
+  pkgs.waybar
+  pkgs.kdeconnect
+  pkgs.kate
+  pkgs.kcalc
+  pkgs.joplin-desktop
+  pkgs.zotero
+  pkgs.zettlr
+  pkgs.protonmail-bridge
+  pkgs.thunderbird
+  pkgs.anytype
+  pkgs.espanso
+  pkgs.skypeforlinux
+  pkgs.aspell
+  pkgs.aspellDicts.en
+  pkgs.aspellDicts.en-computers
+  pkgs.aspellDicts.en-science
+];
+home.stateVersion = "23.05";
+
+
+
+}
