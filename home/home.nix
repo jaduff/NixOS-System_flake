@@ -41,4 +41,16 @@
       };
    };
    };
+   home.packages = [
+    pkgs.anytype
+    pkgs.joplin-desktop
+    pkgs.zotero
+    pkgs.zettlr
+    pkgs.protonmail-bridge
+    pkgs.thunderbird
+    pkgs.espanso
+    pkgs.skypeforlinux
+    pkgs.kdeconnect
+    pkgs.kate
+   ];
 }

@@ -4,6 +4,11 @@
 
 { config, lib, pkgs, ... }:
 
+  let
+	myfflinuxprint = import (/home/jaduff/Source/nixos/nixpkgs) {
+	config.allowUnfree = true;
+};
+in
 {
   # Enable flakes
   nix.package = pkgs.nixFlakes;
@@ -11,6 +16,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./mounts.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -82,7 +88,7 @@
 
   # Enable CUPS to print documents.
    services.printing.enable = true;
-   services.printing.drivers = [ pkgs.foomatic-db-ppds-withNonfreeDb ];
+   services.printing.drivers = [ pkgs.foomatic-db-ppds-withNonfreeDb myfflinuxprint.fflinuxprint ];
 
   # Enable sound.
   # sound.enable = true;
@@ -182,7 +188,8 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
+
 
   environment.systemPackages = with pkgs; [
   vlc
@@ -214,16 +221,6 @@
   gimp
   librewolf
   nextcloud-client
-  kdeconnect
-  kate
-  kcalc
-  joplin-desktop
-  zettlr
-  protonmail-bridge
-  thunderbird
-  anytype
-  espanso
-  skypeforlinux
 #  (builtins.getFlake "github:jaduff/fflinuxprint-flake")
   (vscode-with-extensions.override {
     vscodeExtensions = with vscode-extensions; [
