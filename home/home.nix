@@ -5,6 +5,8 @@
   # paths it should manage.
   home.username = "jaduff";
   home.homeDirectory = "/home/jaduff";
+  
+  imports = [ ./tmux.nix  ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
