@@ -64,12 +64,6 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/configuration.nix
-	  home-manager.nixosModules.home-manager
-	  {
-            home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.users.jaduff = import ./home-manager/home.nix;
-	  }
           ];
         };
       };
