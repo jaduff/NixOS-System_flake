@@ -86,7 +86,6 @@
     krita
     inkscape
     gimp
-    librewolf
     nextcloud-client
     anytype
     joplin-desktop
