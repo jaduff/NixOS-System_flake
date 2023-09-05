@@ -20,6 +20,25 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.emacs = {
+    enable = true;
+  };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter.withAllGrammars
+      neorg
+      orgmode
+    ];
+  };
+  home.file."./.config/nvim/" = {
+     source = ./nvim;
+     recursive = true;
+   };
   programs.git = {
     enable = true;
     userName = "jaduff";
@@ -55,4 +74,5 @@
     pkgs.kdeconnect
     pkgs.kate
    ];
+
 }
