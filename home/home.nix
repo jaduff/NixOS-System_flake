@@ -23,6 +23,10 @@
   programs.emacs = {
     enable = true;
   };
+  home.file."./.config/nvim/" = {
+     source = ./nvim;
+     recursive = true;
+   };
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -34,11 +38,8 @@
       neorg
       orgmode
     ];
+    extraConfig = ":luyafile ~/.config/nvim/init.lua";
   };
-  home.file."./.config/nvim/" = {
-     source = ./nvim;
-     recursive = true;
-   };
   programs.git = {
     enable = true;
     userName = "jaduff";
