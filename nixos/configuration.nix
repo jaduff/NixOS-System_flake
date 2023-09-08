@@ -21,10 +21,16 @@ in
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
+    ./mounts.nix
     ./hardware-configuration.nix
   ];
-
   virtualisation.libvirtd.enable = true;
+
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+  enable = true;
+  setSocketVariable = true;
+  };
 
   nixpkgs = {
     # You can add overlays here
@@ -72,9 +78,39 @@ in
 
   # TODO: Set your hostname
   networking.hostName = "Carnifex-nix";
+  networking.networkmanager.enable = true;
 
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
+  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ];
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
+  };
+
+  # Enable swap on luks
+  boot.initrd.luks.devices."luks-560d2bbf-03ca-4220-9357-59e0abc465ec".device = "/dev/disk/by-uuid/560d2bbf-03ca-4220-9357-59e0abc465ec";
+  boot.initrd.luks.devices."luks-560d2bbf-03ca-4220-9357-59e0abc465ec".keyFile = "/crypto_keyfile.bin";
+
+  # Set your time zone.
+  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Australia/Perth";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_AU.UTF-8";
+    LC_IDENTIFICATION = "en_AU.UTF-8";
+    LC_MEASUREMENT = "en_AU.UTF-8";
+    LC_MONETARY = "en_AU.UTF-8";
+    LC_NAME = "en_AU.UTF-8";
+    LC_NUMERIC = "en_AU.UTF-8";
+    LC_PAPER = "en_AU.UTF-8";
+    LC_TELEPHONE = "en_AU.UTF-8";
+    LC_TIME = "en_AU.UTF-8";
+  };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
