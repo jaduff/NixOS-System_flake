@@ -13,15 +13,16 @@
 ;;
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
-(use-package org-roam
-  :ensure t
-  :custom
-  (org-roam-directory "~/Nextcloud/Documents/org-mode/roam")
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert))
-  :config
-  (org-roam-setup))
+;;      This is a sanity check.
+;;(use-package org-roam
+;;  :ensure t
+;;  :custom
+;;  (org-roam-directory "~/Nextcloud/Documents/org-mode/roam")
+;;  :bind (("C-c n l" . org-roam-buffer-toggle)
+;;         ("C-c n f" . org-roam-node-find)
+;;         ("C-c n i" . org-roam-node-insert))
+;;  :config
+;;  (org-roam-setup))
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (doom! :input
@@ -53,7 +54,7 @@
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
        (popup +defaults)   ; tame sudden yet inevitable temporary windows
-       ;;tabs              ; a tab bar for Emacs
+       ;;tabs              ; a tab bar for /nix/store/jibnac236xsrw0m0a4z08d0ic3wiqdzl-doom.d/config.elEmacs
        ;;treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        (vc-gutter +pretty) ; vcs diff in the fringe

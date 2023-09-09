@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ inputs, outputs, lib, config, pkgs, nixpkgs-unstable, ... }:
 
 let
   doom-emacs = pkgs.callPackage (builtins.fetchTarball {
@@ -42,6 +42,7 @@ in
       #   });
       # })
     ];
+
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -71,11 +72,19 @@ in
     vimAlias = true;
   };
 
+  programs.tmux = {
+    enable=true;
+    extraConfig = ''
+      set -g default-shell /home/jaduff/.nix-profile/bin/fish
+    '';
+  };
 
   home.packages = with pkgs; [
+    unstable.anytype
     doom-emacs
     emacsPackages.org-roam
     emacsPackages.org-roam-ui
+    emacsPackages.ripgrep
     vlc
     firefox
     lm_sensors
@@ -91,10 +100,7 @@ in
     borgbackup
     vorta
     virt-manager
-    tmux
-    gh
     htop-vim
-    git
     libreoffice
     protonvpn-gui
     telegram-desktop
@@ -103,7 +109,6 @@ in
     gimp
     librewolf
     nextcloud-client
-    anytype
     joplin-desktop
     zotero
     zettlr
@@ -113,6 +118,7 @@ in
     skypeforlinux
     kdeconnect
     kate
+    ripgrep
   ]; 
   # Enable home-manager and git
   programs.home-manager.enable = true;
