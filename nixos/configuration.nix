@@ -144,7 +144,7 @@ in
 
   # Enable CUPS to print documents.
    services.printing.enable = true;
-   services.printing.drivers = [ pkgs.foomatic-db-ppds-withNonfreeDb myfflinuxprint.fflinuxprint pkgs.gutenprint];
+   services.printing.drivers = with pkgs; [ foomatic-db-ppds-withNonfreeDb unstable.fflinuxprint gutenprint];
 
 
   # Enable sound with pipewire.
