@@ -42,6 +42,8 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Nextcloud/Documents/org-mode/")
+(setq org-roam-directory (file-truename "~/Nextcloud/Documents/org-mode/"))
+(org-roam-db-autosync-mode)
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -75,9 +77,14 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(map! 
+
+
+(map!
       :leader
-      (:prefix ("j" . "journal")
+      (:prefix ("r" . "journal")
+	       :desc "Toggle roam buffer" "b" #'org-roam-buffer-toggle
+	       :desc "Find roam node" "f" #'org-roam-node-find
+	       :desc "Insert roam node" "i" #'org-roam-node-insert
 	       :desc "Go to today's note" "t" #'org-roam-dailies-goto-today
 	       :desc "Capture daily note" "c" #'org-roam-dailies-capture-today
 	       :desc "Go to another note" "g" #'org-roam-dailies-goto-date))

@@ -85,6 +85,8 @@ in
     emacsPackages.org-roam
     emacsPackages.org-roam-ui
     emacsPackages.ripgrep
+    emacsPackages.all-the-icons
+    emacs-all-the-icons-fonts
     vlc
     firefox
     lm_sensors
