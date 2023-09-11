@@ -77,7 +77,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
+(global-auto-revert-mode t)
 
 (map!
       :leader
@@ -87,5 +87,6 @@
 	       :desc "Insert roam node" "i" #'org-roam-node-insert
 	       :desc "Go to today's note" "t" #'org-roam-dailies-goto-today
 	       :desc "Capture daily note" "c" #'org-roam-dailies-capture-today
-	       :desc "Go to another note" "g" #'org-roam-dailies-goto-date))
+	       :desc "Go to another node" "g" #'org-roam-dailies-goto-date
+	       :desc "Convert to node" "g" #'org-id-get-create))
 (message "Finished loading config.el")
