@@ -42,7 +42,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Nextcloud/Documents/org-mode/")
-(setq org-roam-directory (file-truename "~/Nextcloud/Documents/org-mode/"))
+(setq org-roam-directory "~/Nextcloud/Documents/org-roam/")
 (org-roam-db-autosync-mode)
 
 
@@ -79,7 +79,7 @@
 ;; they are implemented.
 (global-auto-revert-mode t)
 (setq org-agenda-custom-commands
-      '(("P" "Printed agenda"
+      '(("j" "My agenda"
          ((agenda "" ((org-agenda-span 7)                      ;; overview of appointments
                       (org-agenda-start-on-weekday nil)         ;; calendar begins today
                       (org-agenda-repeating-timestamp-show-all t)
@@ -94,7 +94,7 @@
                  (org-agenda-sorting-strategy '(tag-up priority-down))
                  (org-agenda-todo-keyword-format "")
                  (org-agenda-overriding-header "\nTasks by Context\n------------------\n"))))
-         ((org-agenda-with-colors nil)
+         ((org-agenda-with-colors t)
           (org-agenda-compact-blocks t)
           (org-agenda-remove-tags t)
           (ps-number-of-columns 2)
@@ -109,7 +109,8 @@
 	       :desc "Find roam node" "f" #'org-roam-node-find
 	       :desc "Insert roam node" "i" #'org-roam-node-insert
 	       :desc "Go to today's note" "t" #'org-roam-dailies-goto-today
-	       :desc "Capture daily note" "c" #'org-roam-dailies-capture-today
+	       :desc "Capture daily note" "d" #'org-roam-dailies-capture-today
 	       :desc "Go to another node" "g" #'org-roam-dailies-goto-date
-	       :desc "Convert to node" "g" #'org-id-get-create))
+	       :desc "Quick Note" "c" #'org-roam-capture
+	       :desc "Convert to node" "C" #'org-id-get-create))
 (message "Finished loading config.el")
