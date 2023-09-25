@@ -3,14 +3,6 @@
 
 { inputs, outputs, lib, config, pkgs, nixpkgs-unstable, ... }:
 
-let
-  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
-    url = https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz;
-  }) {
-    doomPrivateDir = ./doom.d;  # Directory containing your config.el, init.el
-                                # and packages.el files
-  };
-in
 {
   # You can import other home-manager modules here
   imports = [
@@ -79,14 +71,16 @@ in
     '';
   };
 
+programs.emacs = {
+    enable = true;
+    package = pkgs.emacs;  # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
+    extraConfig = ''
+      (setq standard-indent 2)
+    '';
+  };
+
   home.packages = with pkgs; [
     unstable.anytype
-    doom-emacs
-    emacsPackages.org-roam
-    emacsPackages.org-roam-ui
-    emacsPackages.ripgrep
-    emacsPackages.all-the-icons
-    emacs-all-the-icons-fonts
     vlc
     firefox
     lm_sensors
@@ -120,10 +114,50 @@ in
     kdeconnect
     kate
     ripgrep
+    binutils
+    (ripgrep.override { withPCRE2 = true; })
+    gnutls
+    fd
+    imagemagick
+    zstd
+    nodePackages.javascript-typescript-langserver
+    sqlite
+    editorconfig-core-c
+    emacs-all-the-icons-fonts
+    kdenlive
+    mediainfo
+    glaxnimate
+    hexchat
   ];
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+home = {
+    sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
+    sessionVariables = {
+      DOOMDIR = "${config.xdg.configHome}/doom-config";
+      DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
+    };
+  };
+
+  xdg = {
+    enable = true;
+    configFile = {
+      "emacs" = {
+        source = builtins.fetchGit "https://github.com/hlissner/doom-emacs";
+        onChange = "${pkgs.writeShellScript "doom-change" ''
+          export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
+          export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
+          if [ ! -d "$DOOMLOCALDIR" ]; then
+            ${config.xdg.configHome}/emacs/bin/doom install
+          else
+            ${config.xdg.configHome}/emacs/bin/doom sync -u
+          fi
+        ''}";
+      };
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

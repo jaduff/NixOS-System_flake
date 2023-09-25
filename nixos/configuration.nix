@@ -181,6 +181,8 @@ in
     vim
     gh
     git
+    gcc
+    binutils
   ];
 
 
