@@ -113,4 +113,15 @@
 	       :desc "Go to another node" "g" #'org-roam-dailies-goto-date
 	       :desc "Quick Note" "c" #'org-roam-capture
 	       :desc "Convert to node" "C" #'org-id-get-create))
+;; hide emphasis markers
+(setq org-hide-emphasis-markers t)
+
+;; word wrap
+(with-eval-after-load 'org
+  (add-hook 'org-mode-hook #'visual-line-mode))
+
+;; disable toolbar, menu bar and scroll bar
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
 (message "Finished loading config.el")

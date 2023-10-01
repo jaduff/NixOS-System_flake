@@ -183,6 +183,10 @@ in
     git
     gcc
     binutils
+     # any less than medium isn't guaranteed to work
+    texlive.combined.scheme-medium
+  # required by +jupyter
+    (python3.withPackages(ps: with ps; [jupyter]))
   ];
 
 
