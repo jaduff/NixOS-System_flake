@@ -145,7 +145,10 @@ home = {
     enable = true;
     configFile = {
       "emacs" = {
-        source = builtins.fetchGit "https://github.com/hlissner/doom-emacs";
+        source = builtins.fetchGit {
+		url = "https://github.com/hlissner/doom-emacs";
+		rev = "844a82c4a0cacbb5a1aa558c88675ba1a9ee80a3";
+		};
         onChange = "${pkgs.writeShellScript "doom-change" ''
           export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
           export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
