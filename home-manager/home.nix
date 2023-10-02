@@ -128,6 +128,7 @@ programs.emacs = {
     mediainfo
     glaxnimate
     hexchat
+    kcalc
   ];
   # Enable home-manager and git
   programs.home-manager.enable = true;
