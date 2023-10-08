@@ -178,6 +178,8 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    wineWowPackages.stable
+    winetricks
     vim
     gh
     git

@@ -80,6 +80,8 @@ programs.emacs = {
   };
 
   home.packages = with pkgs; [
+    calibre
+    steam
     unstable.anytype
     vlc
     firefox
