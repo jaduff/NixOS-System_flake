@@ -131,6 +131,14 @@ programs.emacs = {
     glaxnimate
     hexchat
     kcalc
+    unstable.netcoredbg
+     (unstable.vscode-with-extensions.override {
+    vscodeExtensions = with unstable.vscode-extensions; [
+      unstable.vscode-extensions.ms-dotnettools.csharp
+      unstable.vscode-extensions.ms-azuretools.vscode-docker
+      unstable.vscode-extensions.ms-dotnettools.csharp
+      ];   })
+
   ];
   # Enable home-manager and git
   programs.home-manager.enable = true;
