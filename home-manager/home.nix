@@ -107,7 +107,7 @@ programs.emacs = {
     librewolf
     nextcloud-client
     joplin-desktop
-    zotero
+    #zotero # Disabled until insecurity resolved
     zettlr
     protonmail-bridge
     thunderbird
