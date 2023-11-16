@@ -144,7 +144,7 @@ in
 
   # Enable CUPS to print documents.
    services.printing.enable = true;
-   services.printing.drivers = with pkgs; [ foomatic-db-ppds-withNonfreeDb unstable.fflinuxprint gutenprint];
+   services.printing.drivers = with pkgs; [ foomatic-db-ppds-withNonfreeDb unstable.fflinuxprint gutenprint hplip];
 programs.steam = {
   enable = true;
   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
