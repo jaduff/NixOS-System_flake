@@ -113,6 +113,7 @@ in
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
+  users.groups.jaduff = {};
   users.users = {
     # FIXME: Replace with your username
     jaduff = {
@@ -149,6 +150,11 @@ programs.steam = {
   enable = true;
   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+};
+
+networking.firewall = {
+enable = true;
+allowedTCPPortRanges = [{from = 1714; to = 1764;} ];
 };
 
   # Enable sound with pipewire.
