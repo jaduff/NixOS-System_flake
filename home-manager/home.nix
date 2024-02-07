@@ -157,7 +157,7 @@ home = {
       "emacs" = {
         source = builtins.fetchGit {
 		url = "https://github.com/hlissner/doom-emacs";
-		rev = "986398504d09e585c7d1a8d73a6394024fe6f164";
+		rev = "a2484538b48237636a70e5b4ccd358a4fb03c13c"; # May need to delete .config/doom-local, and re-run doom install
 		};
         onChange = "${pkgs.writeShellScript "doom-change" ''
           export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
@@ -176,5 +176,5 @@ home = {
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 }
