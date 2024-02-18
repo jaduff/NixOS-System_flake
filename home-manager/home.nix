@@ -157,7 +157,8 @@ home = {
       "emacs" = {
         source = builtins.fetchGit {
 		url = "https://github.com/hlissner/doom-emacs";
-		rev = "a2484538b48237636a70e5b4ccd358a4fb03c13c"; # May need to delete .config/doom-local, and re-run doom install
+		rev = "a2484538b48237636a70e5b4ccd358a4fb03c13c"; # May need to delete .config/doom-local, and re-run doom install.
+        # May need to also rebuild sqlite in .config/doom-local/straight/build-28.2/emacsql/sqlite with make command
 		};
         onChange = "${pkgs.writeShellScript "doom-change" ''
           export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
