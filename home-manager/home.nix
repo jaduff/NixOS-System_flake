@@ -80,7 +80,6 @@ programs.emacs = {
   };
 
   home.packages = with pkgs; [
-    microsoft-edge
     calibre
     unstable.anytype
     vlc
