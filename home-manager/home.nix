@@ -106,9 +106,7 @@ programs.emacs = {
     gimp
     librewolf
     nextcloud-client
-    joplin-desktop
     #zotero # Disabled until insecurity resolved
-    zettlr
     protonmail-bridge
     thunderbird
     skypeforlinux
