@@ -197,6 +197,8 @@ allowedTCPPorts = [42591];
     git
     gcc
     binutils
+    syncthing
+    syncthingtray
      # any less than medium isn't guaranteed to work
     texlive.combined.scheme-medium
   # required by +jupyter
