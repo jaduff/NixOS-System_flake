@@ -156,7 +156,7 @@ networking.firewall = {
 enable = true;
 allowedTCPPortRanges = [{from = 1714; to = 1764;} ];
 allowedUDPPortRanges = [{from = 1714; to = 1764;} ];
-allowedTCPPorts = [42591];
+allowedTCPPorts = [42591 443];
 };
 
   # Enable sound with pipewire.

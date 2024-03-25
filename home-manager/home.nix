@@ -81,6 +81,7 @@ programs.emacs = {
 
   home.packages = with pkgs; [
     calibre
+    joplin-desktop
     unstable.anytype
     vlc
     firefox
