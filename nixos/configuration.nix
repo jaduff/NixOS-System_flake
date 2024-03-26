@@ -199,6 +199,7 @@ allowedTCPPorts = [42591 443];
     binutils
     syncthing
     syncthingtray
+    devenv
      # any less than medium isn't guaranteed to work
     texlive.combined.scheme-medium
   # required by +jupyter
