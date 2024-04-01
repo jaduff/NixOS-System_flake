@@ -80,6 +80,7 @@ programs.emacs = {
   };
 
   home.packages = with pkgs; [
+    vim
     firefox
     lm_sensors
     cifs-utils
