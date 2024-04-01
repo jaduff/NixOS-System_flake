@@ -2,11 +2,6 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
 { inputs, outputs, lib, config, pkgs, ... }: 
-let
-	myfflinuxprint = import (/home/jaduff/Source/nixos/nixpkgs) {
-	config.allowUnfree = true;
-        };
-in
 {
   # You can import other NixOS modules here
   imports = [
@@ -85,9 +80,9 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
   # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
+#  boot.initrd.secrets = {
+#    "/crypto_keyfile.bin" = null;
+#  };
 
   # Enable swap on luks
   boot.initrd.luks.devices."luks-560d2bbf-03ca-4220-9357-59e0abc465ec".device = "/dev/disk/by-uuid/560d2bbf-03ca-4220-9357-59e0abc465ec";
@@ -144,13 +139,13 @@ in
   # services.xserver.xkbOptions = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-   services.printing.enable = true;
-   services.printing.drivers = with pkgs; [ foomatic-db-ppds-withNonfreeDb unstable.fflinuxprint gutenprint hplip cups-pdf-to-pdf];
-programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-};
+#   services.printing.enable = true;
+#   services.printing.drivers = with pkgs; [ foomatic-db-ppds-withNonfreeDb unstable.fflinuxprint gutenprint hplip cups-pdf-to-pdf];
+#programs.steam = {
+#  enable = true;
+#  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+#  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+#};
 
 networking.firewall = {
 enable = true;

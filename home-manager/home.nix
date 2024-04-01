@@ -80,18 +80,12 @@ programs.emacs = {
   };
 
   home.packages = with pkgs; [
-    calibre
-    joplin-desktop
-    unstable.anytype
-    vlc
     firefox
     lm_sensors
     cifs-utils
     iotop
     inetutils
-    protonvpn-gui
     postgresql
-    alacritty
     remmina
     oh-my-fish
     fish
@@ -102,41 +96,13 @@ programs.emacs = {
     libreoffice
     protonvpn-gui
     telegram-desktop
-    krita
-    inkscape
-    gimp
-    librewolf
     nextcloud-client
     #zotero # Disabled until insecurity resolved
-    protonmail-bridge
-    thunderbird
     skypeforlinux
     kdeconnect
     kate
-    ripgrep
-    binutils
-    (ripgrep.override { withPCRE2 = true; })
-    gnutls
-    fd
-    imagemagick
-    zstd
-    nodePackages.javascript-typescript-langserver
-    sqlite
-    editorconfig-core-c
-    emacs-all-the-icons-fonts
-    kdenlive
     mediainfo
-    glaxnimate
-    hexchat
     kcalc
-    unstable.netcoredbg
-     (unstable.vscode-with-extensions.override {
-    vscodeExtensions = with unstable.vscode-extensions; [
-      unstable.vscode-extensions.ms-dotnettools.csharp
-      unstable.vscode-extensions.ms-azuretools.vscode-docker
-      unstable.vscode-extensions.ms-dotnettools.csharp
-      ];   })
-
   ];
   # Enable home-manager and git
   programs.home-manager.enable = true;
